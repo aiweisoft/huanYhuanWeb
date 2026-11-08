@@ -1,0 +1,314 @@
+/* ==========================================================================
+   缓一缓 · 管理后台品牌层
+   与 App 共用一套视觉：暖白底、雾蓝强调、陶土点缀、14px 圆角、极淡暖投影。
+   只做「皮」，不动 uni-admin 的结构与交互。
+   ========================================================================== */
+
+:root {
+  --hh-bg: #f6f2ec;
+  --hh-surface: #fffdfb;
+  --hh-surface-2: #f8f4ee;
+  --hh-line: #ede5da;
+  --hh-line-strong: #e4dacd;
+  --hh-text: #2a2723;
+  --hh-text-2: #5f5a52;
+  --hh-text-3: #8a8177;
+  --hh-accent: #3e5b69;
+  --hh-accent-soft: rgba(62, 91, 105, 0.08);
+  --hh-terracotta: #be8567;
+  --hh-terracotta-soft: rgba(190, 133, 103, 0.12);
+  --hh-radius: 14px;
+  --hh-shadow: 0 6px 18px rgba(74, 64, 54, 0.05);
+  --hh-shadow-lg: 0 24px 60px rgba(74, 64, 54, 0.1);
+}
+
+/* ---------- 底色 ---------- */
+
+body {
+  background-color: var(--hh-bg);
+  background-image: radial-gradient(900px 620px at 8% -12%, rgba(62, 91, 105, 0.08), transparent 62%),
+    radial-gradient(760px 560px at 102% -4%, rgba(190, 133, 103, 0.1), transparent 64%),
+    radial-gradient(820px 640px at 48% 118%, rgba(126, 150, 136, 0.08), transparent 62%);
+  background-attachment: fixed;
+}
+
+/* 主区域留一点柔光，别让整块灰扑扑 */
+.uni-app--showleftwindow uni-page-wrapper {
+  background-color: var(--hh-bg);
+  background-image: radial-gradient(560px 380px at 100% 0%, rgba(62, 91, 105, 0.05), transparent 68%);
+}
+
+/* ---------- 标题与容器 ---------- */
+
+.uni-container {
+  padding: 20px;
+}
+
+.uni-header {
+  min-height: 58px;
+  padding: 0 20px;
+  border-bottom: 1px solid var(--hh-line);
+}
+
+.uni-title {
+  font-size: 17px;
+  font-weight: 600;
+  letter-spacing: 0.2px;
+  color: var(--hh-text);
+}
+
+.uni-sub-title {
+  color: var(--hh-text-3);
+}
+
+.uni-tips,
+.uni-form-item-tips,
+.uni-form-item-empty {
+  color: var(--hh-text-3);
+}
+
+.label-text {
+  color: var(--hh-text-2);
+  font-weight: 500;
+}
+
+.uni-link,
+.link-btn,
+.link-btn-color {
+  color: var(--hh-accent) !important;
+}
+
+/* ---------- 按钮 ---------- */
+
+.uni-button,
+button {
+  border-radius: 8px;
+  font-weight: 500;
+  letter-spacing: 0.2px;
+  transition:
+    background-color 0.18s ease,
+    border-color 0.18s ease,
+    color 0.18s ease,
+    box-shadow 0.18s ease;
+}
+
+.uni-button:hover,
+.uni-button:focus,
+button:hover {
+  opacity: 1;
+  box-shadow: 0 4px 12px rgba(74, 64, 54, 0.08);
+}
+
+button[type='primary'] {
+  box-shadow: 0 6px 16px rgba(62, 91, 105, 0.18);
+}
+
+button[type='primary']:hover {
+  box-shadow: 0 8px 20px rgba(62, 91, 105, 0.24);
+}
+
+button[type='default'] {
+  background-color: var(--hh-surface);
+  border-color: var(--hh-line-strong);
+  color: var(--hh-text-2);
+}
+
+/* ---------- 表格 ---------- */
+
+.uni-table {
+  background-color: var(--hh-surface);
+  border-radius: var(--hh-radius);
+}
+
+.uni-table-th {
+  background-color: #f4efe7;
+  color: var(--hh-text);
+  font-weight: 600;
+  border-bottom-color: var(--hh-line-strong);
+}
+
+.uni-table-td {
+  color: var(--hh-text-2);
+  border-bottom-color: var(--hh-line);
+}
+
+.table--border {
+  border-color: var(--hh-line-strong) !important;
+}
+
+.table--border .uni-table-th,
+.table--border .uni-table-td,
+.table--border .empty-border {
+  border-right-color: var(--hh-line-strong);
+}
+
+.table--stripe .uni-table-tr:nth-child(2n + 3) {
+  background-color: #fbf8f3;
+}
+
+.uni-table .uni-table-tr:nth-child(n + 2):hover {
+  background-color: #f6efe6;
+}
+
+.uni-table-text {
+  color: var(--hh-text-3);
+}
+
+/* ---------- 卡片 / 面板 ---------- */
+
+.uni-stat--x {
+  background-color: var(--hh-surface);
+  border: 1px solid var(--hh-line);
+  border-radius: var(--hh-radius);
+  box-shadow: var(--hh-shadow);
+}
+
+.uni-stat-card-header {
+  color: var(--hh-text);
+  font-weight: 600;
+  letter-spacing: 0.2px;
+}
+
+.uni-stat-panel,
+.uni-card {
+  border-radius: var(--hh-radius);
+}
+
+/* ---------- 表单 ---------- */
+
+.uni-input-border,
+.uni-textarea-border,
+.uni-search {
+  border-color: var(--hh-line-strong);
+  border-radius: 10px;
+  background-color: var(--hh-surface);
+  color: var(--hh-text-2);
+}
+
+.uni-search::placeholder,
+.uni-input-placeholder {
+  color: var(--hh-text-3);
+}
+
+.uni-easyinput__content,
+.uni-easyinput__content-input {
+  border-radius: 10px;
+}
+
+.uni-forms-item__label .label-text {
+  color: var(--hh-text-2) !important;
+}
+
+/* ---------- 标签 / 徽标 / 分页 ---------- */
+
+.uni-tag {
+  border-radius: 999px;
+  font-weight: 500;
+  letter-spacing: 0.2px;
+}
+
+.uni-pagination__num-current .page--active {
+  border-radius: 8px;
+}
+
+/* ---------- 弹窗 ---------- */
+
+.uni-modal,
+.modal,
+.uni-popup__wrapper {
+  border-radius: var(--hh-radius);
+}
+
+.uni-modal {
+  box-shadow: var(--hh-shadow-lg);
+}
+
+.uni-popup-dialog {
+  border-radius: var(--hh-radius);
+  box-shadow: var(--hh-shadow-lg);
+}
+
+/* ---------- 滚动条 ---------- */
+
+/* #ifdef H5 */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #ded4c6;
+  border: 3px solid transparent;
+  border-radius: 999px;
+  background-clip: content-box;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: #cbbfae;
+}
+
+::-webkit-scrollbar-track {
+  background-color: transparent;
+}
+/* #endif */
+
+/* ---------- 登录页 ---------- */
+
+body .uni-content {
+  background-color: var(--hh-surface) !important;
+  background-image: linear-gradient(165deg, rgba(255, 253, 251, 0.96), rgba(255, 253, 251, 0.86)) !important;
+  border: 1px solid rgba(255, 255, 255, 0.8);
+  box-shadow: var(--hh-shadow-lg);
+}
+
+body .uni-content .link {
+  color: var(--hh-accent) !important;
+}
+
+body .uni-content .forget {
+  color: var(--hh-text-3) !important;
+}
+
+body .uni-content .input-box {
+  background-color: var(--hh-surface-2) !important;
+  border-radius: 10px !important;
+}
+
+body .uni-content .uni-btn {
+  background-color: var(--hh-accent) !important;
+  border-radius: 10px !important;
+  letter-spacing: 1px;
+}
+
+body .uni-content .uni-easyinput__placeholder {
+  color: var(--hh-text-3) !important;
+}
+
+/* #ifdef H5 */
+@media screen and (min-width: 690px) {
+  body .uni-content {
+    top: 12vh;
+    padding: 34px 44px 60px 44px;
+    border-radius: 20px;
+    max-width: 430px;
+    backdrop-filter: blur(18px) saturate(140%);
+  }
+
+  body .uni-content .login-logo image {
+    width: 56px;
+    height: 56px;
+  }
+}
+/* #endif */
+
+/* ---------- 主题色下的细节 ---------- */
+
+[data-theme='default'] .hh-tab.on,
+[data-theme='green'] .hh-tab.on {
+  color: var(--hh-accent);
+}
+
+.uni-selector-select .uni-picker-item.selected,
+.uni-picker-select .uni-picker-item.selected {
+  color: var(--hh-accent);
+}
